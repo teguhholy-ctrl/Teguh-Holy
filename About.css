@@ -1,0 +1,724 @@
+/* =========================================
+   1. VARIABEL WARNA & SHADOW (SISTEM TERPADU)
+   ========================================= */
+:root {
+    /* Warna Utama */
+    --bg-dark: #1a1512;
+    --text-glow: #f5e6ca;
+    --text-main: #e0d0b0;
+    --btn-color: #d4c5a9;
+    --btn-hover: #c4b499;
+    --glass-bg: rgba(26, 21, 18, 0.7);
+    --card-bg: #251e1a;
+    
+    /* --- SISTEM OVERLAY BACKGROUND (DISATUKAN) --- */
+    --overlay-dark: rgba(0, 0, 0, 0.85);
+    --overlay-gradient: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0.85) 50%,
+        rgba(0, 0, 0, 0.95) 100%
+    );
+    
+    /* --- SISTEM SHADOW TERPADU --- */
+    --shadow-soft: 0 5px 15px rgba(0, 0, 0, 0.3);
+    --shadow-medium: 0 10px 25px rgba(0, 0, 0, 0.4);
+    --shadow-strong: 0 10px 40px rgba(0, 0, 0, 0.6);
+    --shadow-glow: 0 0 15px rgba(245, 230, 202, 0.3);
+    --shadow-glow-strong: 0 0 25px rgba(245, 230, 202, 0.5);
+    --shadow-beige: 0 0 15px rgba(212, 197, 169, 0.4);
+    --shadow-beige-strong: 0 0 25px rgba(212, 197, 169, 0.8);
+    
+    /* --- NEON GLOW EFFECTS --- */
+    --neon-beige: 0 0 20px rgba(212, 197, 169, 0.6), 0 0 40px rgba(212, 197, 169, 0.4);
+    --neon-beige-strong: 0 0 30px rgba(212, 197, 169, 0.8), 0 0 60px rgba(212, 197, 169, 0.6);
+    --neon-green: 0 0 20px rgba(37, 211, 102, 0.6), 0 0 40px rgba(37, 211, 102, 0.4);
+    --neon-white: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 40px rgba(255, 255, 255, 0.4);
+}
+
+/* =========================================
+   2. RESET & GLOBAL (PERBAIKAN RESPONSIVE)
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-main);
+    background-color: var(--bg-dark);
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* =========================================
+   3. BACKGROUND UTAMA
+   ========================================= */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('Background1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: -2;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--overlay-gradient);
+    z-index: -1;
+    box-shadow: 
+        inset 0 0 100px rgba(0, 0, 0, 0.8),
+        inset 0 0 200px rgba(0, 0, 0, 0.6);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+/* =========================================
+   4. NAVBAR
+   ========================================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    z-index: 1000;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-brand {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--text-glow);
+    letter-spacing: 1px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    margin-left: 30px;
+    font-size: 0.95rem;
+    transition: 0.3s;
+    position: relative;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--text-glow);
+    text-shadow: 0 0 8px rgba(245, 230, 202, 0.5);
+}
+
+/* =========================================
+   5. SECTION BOX
+   ========================================= */
+.section-box {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-strong);
+    border: 1px solid rgba(212, 197, 169, 0.3);
+    margin-bottom: 40px;
+    transition: all 0.3s ease;
+}
+
+.section-box:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--btn-color);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--text-glow);
+    margin-bottom: 30px;
+    text-shadow: var(--shadow-glow);
+    text-align: center;
+}
+
+/* =========================================
+   6. SECTION TENTANG SAYA
+   ========================================= */
+.about-section {
+    padding: 150px 0 100px;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: #ccc;
+    text-align: center;
+}
+
+/* =========================================
+   7. GALERI FOTO
+   ========================================= */
+.gallery-section {
+    padding: 50px 0;
+}
+
+.gallery-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.gallery-card {
+    width: 300px;
+    height: 400px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.5s ease;
+    cursor: pointer;
+    border: 3px solid var(--btn-color);
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease;
+}
+
+.gallery-card:hover {
+    transform: scale(1.05);
+    box-shadow: var(--neon-beige);
+    border-color: var(--text-glow);
+}
+/* =========================================
+   8. MUSIK FAVORIT (DIPERBAIKI - ADA JUDUL LAGU)
+   ========================================= */
+.music-section {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.music-card {
+    display: inline-block;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.5s ease;
+    cursor: pointer;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.music-card img {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: all 0.5s ease;
+}
+
+.music-card:hover {
+    transform: scale(1.05);
+    box-shadow: var(--neon-beige);
+}
+
+.music-card:hover img {
+    box-shadow: var(--neon-beige);
+}
+
+.music-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.music-card:hover .music-overlay {
+    opacity: 1;
+}
+
+.music-overlay i {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.music-overlay span {
+    color: #fff;
+    font-size: 1rem;
+}
+
+/* Judul Lagu */
+.music-title {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    color: var(--text-glow);
+    font-weight: 600;
+    text-shadow: var(--shadow-glow);
+    transition: all 0.3s ease;
+}
+
+.music-title:hover {
+    color: var(--text-main);
+    text-shadow: var(--shadow-glow-strong);
+}
+
+/* =========================================
+   9. MAKANAN & MINUMAN FAVORIT
+   ========================================= */
+.food-section {
+    padding: 50px 0;
+}
+
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.food-card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.3s ease;
+    text-align: center;
+    border: 1px solid rgba(212, 197, 169, 0.3);
+}
+
+.food-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--btn-color);
+}
+
+.food-icon {
+    font-size: 2.5rem;
+    color: var(--btn-color);
+    margin-bottom: 15px;
+}
+
+.food-card h3 {
+    color: var(--text-glow);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.food-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.food-card ul li {
+    padding: 8px 0;
+    color: #ccc;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.food-card ul li:last-child {
+    border-bottom: none;
+}
+
+/* =========================================
+   10. SMA TUJUAN
+   ========================================= */
+.school-section {
+    padding: 50px 0;
+}
+
+.school-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.5s ease;
+    cursor: pointer;
+    border: 3px solid var(--btn-color);
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.school-card img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: all 0.5s ease;
+}
+
+.school-card:hover {
+    transform: scale(1.05);
+    box-shadow: var(--neon-beige);
+    border-color: var(--text-glow);
+}
+
+/* Teks Baru di Bawah Logo */
+.school-description {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #ccc;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: var(--shadow-glow);
+}
+
+.school-description:hover {
+    color: var(--text-glow);
+    text-shadow: var(--shadow-glow-strong);
+}
+
+/* =========================================
+   11. QUOTES
+   ========================================= */
+.quotes-section {
+    padding: 50px 0;
+}
+
+.quotes-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 700px;
+    margin: 0 auto;
+    border: 1px solid rgba(212, 197, 169, 0.3);
+    box-shadow: var(--shadow-soft);
+}
+
+.quotes-card i {
+    font-size: 2rem;
+    color: var(--btn-color);
+    margin-bottom: 15px;
+}
+
+.quotes-card p {
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--text-glow);
+    text-shadow: var(--shadow-glow);
+    line-height: 1.6;
+}
+
+.quotes-card i:last-child {
+    margin-top: 15px;
+}
+
+/* =========================================
+   12. STATISTIK KELEBIHAN
+   ========================================= */
+.skills-section {
+    padding: 50px 0 100px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.skill-card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(212, 197, 169, 0.3);
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--btn-color);
+}
+
+.skill-icon {
+    font-size: 3rem;
+    display: inline-block;
+    transition: all 0.3s ease;
+    color: var(--btn-color);
+    filter: drop-shadow(0 0 10px rgba(212, 197, 169, 0.5));
+}
+
+.skill-card:hover .skill-icon {
+    transform: scale(1.1);
+    color: var(--text-glow);
+    filter: drop-shadow(0 0 20px rgba(245, 230, 202, 0.8));
+}
+
+.skill-card h3 {
+    color: var(--text-glow);
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--btn-color), var(--text-glow));
+    border-radius: 10px;
+    transition: width 1s ease;
+    box-shadow: var(--shadow-glow);
+}
+
+.progress-text {
+    color: var(--text-glow);
+    font-size: 0.9rem;
+}
+
+/* =========================================
+   13. RESPONSIVE (LENGKAP - UNTUK SEMUA DEVICE)
+   ========================================= */
+
+/* Tablet & Desktop Kecil */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .about-content {
+        font-size: 1rem;
+    }
+
+    .gallery-grid {
+        gap: 20px;
+    }
+
+    .gallery-card {
+        width: 250px;
+        height: 350px;
+    }
+
+    .music-card img {
+        width: 300px;
+        height: 300px;
+    }
+
+    .food-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .school-card img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    .about-section {
+        padding: 120px 0 80px;
+    }
+
+    .skills-section {
+        padding: 50px 0 80px;
+    }
+
+    .section-box {
+        padding: 30px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .about-content {
+        font-size: 0.9rem;
+    }
+
+    .gallery-grid {
+        gap: 15px;
+    }
+
+    .gallery-card {
+        width: 200px;
+        height: 300px;
+    }
+
+    .music-card img {
+        width: 250px;
+        height: 250px;
+    }
+
+    .food-card {
+        padding: 20px;
+    }
+
+    .food-icon {
+        font-size: 2rem;
+    }
+
+    .food-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .school-card img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .quotes-card {
+        padding: 30px 20px;
+    }
+
+    .quotes-card p {
+        font-size: 1.1rem;
+    }
+
+    .skill-card {
+        padding: 20px;
+    }
+
+    .skill-icon {
+        font-size: 2.5rem;
+    }
+
+    .skill-card h3 {
+        font-size: 1rem;
+    }
+
+    .navbar {
+        padding: 12px 15px;
+    }
+
+    .nav-brand {
+        font-size: 1rem;
+    }
+
+    .nav-links a {
+        font-size: 0.85rem;
+        margin-left: 15px;
+    }
+
+    .about-section {
+        padding: 100px 0 60px;
+    }
+
+    .gallery-section {
+        padding: 40px 0;
+    }
+
+    .music-section {
+        padding: 40px 0;
+    }
+
+    .food-section {
+        padding: 40px 0;
+    }
+
+    .school-section {
+        padding: 40px 0;
+    }
+
+    .quotes-section {
+        padding: 40px 0;
+    }
+
+    .skills-section {
+        padding: 40px 0 60px;
+    }
+
+    .section-box {
+        padding: 25px;
+        margin-bottom: 30px;
+    }
+}
+
+/* Landscape Mobile */
+@media (max-width: 360px) {
+    .section-title {
+        font-size: 1.3rem;
+    }
+
+    .gallery-card {
+        width: 180px;
+        height: 280px;
+    }
+
+    .music-card img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .school-card img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .skill-card {
+        padding: 15px;
+    }
+
+    .skill-icon {
+        font-size: 2rem;
+    }
+}
